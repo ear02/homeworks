@@ -16,10 +16,6 @@ def power_numbers(*nums):
         res.append(n ** 2)
     return res
 
-#
-# # проверка
-# print(power_numbers(1, 2, 5, 7))
-
 # filter types
 ODD = "odd"
 EVEN = "even"
@@ -67,6 +63,8 @@ def filter_numbers(nums, filter_type):
 
 
 # # проверка
+# # квадраты
+# print(power_numbers(1, 2, 5, 7))
 # # нечётные
 # print(filter_numbers([1, 2, 3], ODD))
 # # чётные
