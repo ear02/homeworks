@@ -50,7 +50,7 @@ async def async_main():
 
 
 def main():
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+#     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(async_main())
 
 
