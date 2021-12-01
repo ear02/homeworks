@@ -23,7 +23,7 @@ async def create_tables():
         await connection.run_sync(Base.metadata.create_all)
 
 
-async def fill_table_users(user_data, post_data):
+async def fill_tables(user_data, post_data):
     user_list = [User(username=user["username"], name=user["name"], email=user["email"]) for user in user_data]
     post_list = [Post(title=post["title"], body=post["body"], user_id=post["userId"]) for post in post_data]
     async with Session() as session:
@@ -39,7 +39,7 @@ async def fill_table_users(user_data, post_data):
 async def async_main():
     await create_tables()
     user_data, post_data = await get_data()
-    await fill_table_users(user_data, post_data)
+    await fill_tables(user_data, post_data)
 
 
 def main():
