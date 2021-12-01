@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% block head %}
+      Start page
+      {% endblock %}
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ url_for('startpage')}}">StartPage</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Actions
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ url_for('items.add')}}">Add item</a></li>
+            </ul>
+          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about.about')}}">About</a>
+           </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main_container">
+      {% block body %}
+      <div class="h1">
+          This is a start page!
+      </div>
+       <div>
+        <div class="h4">
+          Items:
+        </div>
+        <ol>
+            {% for item_id, item_name in items %}
+                <li>
+                     {{item_name}}
+                </li>
+            {% endfor %}
+       </ol>
+      </div>
+
+      {% endblock %}
+
+
+    </div>
+  </body>
+
+</html>
