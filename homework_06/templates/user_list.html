@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    Users page
+{% endblock %}
+{% block body %}
+
+<form method="post">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="username">UserName</span>
+      </div>
+      <input type="text" name="username" class="form-control"  required="required">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="name">Name</span>
+      </div>
+      <input type="text" name="name" class="form-control"  required="required">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="email">Email</span>
+      </div>
+      <input type="text" name="email" class="form-control"  required="required">
+
+    </div>
+    <input class="btn btn-success my-2" type="submit" value="Add user">
+</form>
+
+<div class="h4"> Users </div>
+<table class="table table-success">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

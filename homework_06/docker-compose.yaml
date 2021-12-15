@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  journal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      CONFIG: ProductionConfig
+      SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://user:password@pg:5432/journal
+    ports:
+      - "5080:80"
+    depends_on:
+      - pg
+
+  pg:
+    image: postgres
+    environment:
+      POSTGRES_DB: journal
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+volumes:
+  pg-data:
